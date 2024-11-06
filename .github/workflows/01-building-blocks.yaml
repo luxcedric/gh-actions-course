@@ -5,15 +5,15 @@ jobs:
   job-1:
     runs-on: ubuntu-latest
     steps: 
-      - id: Say hello
+      - name: Say hello
         run: echo "Hello World!"
   job-2:
     runs-on: ubuntu-latest
     steps: 
-      - id: Failed step
+      - name: Failed step
         run: |
           echo "I"
           echo " will fail!"
           exit 1
-      - id: Say goodbye
+      - name: Say goodbye
         run: echo "Goodbye!"
