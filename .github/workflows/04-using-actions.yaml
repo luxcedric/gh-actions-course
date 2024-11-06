@@ -11,5 +11,5 @@ jobs:
             with:
                 path: main
           - name: Printing Folders
-            run: sh "ls -laR"
+            run: ls -laR
 
