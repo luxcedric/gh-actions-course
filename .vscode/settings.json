@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///home/cedric/Documents/Mastering-GH-Actions/.github/workflows/07-expressions.yaml"
+    }
+}
