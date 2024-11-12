@@ -1,0 +1,65 @@
+name: 15 - Working with Matrices
+
+on: 
+    workflow_dispatch
+
+jobs:
+    backwards-comnpatibility:
+
+        name: ${{ matrix.os }} - ${{ matrix.node-version }}
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+            fail-fast: false
+            matrix:
+                node-version: [18.x, 20.x, 21.x]
+                os: 
+                    - ubuntu-latest
+                    # - macos-latest
+                    - windows-latest
+                include:
+                    - os: ubuntu-latest
+                      node-version: 16.x
+                    - os: ubuntu-latest
+                      node-version: 21.x
+                      tag: experimental
+        steps:
+            - name: Setup Node
+              uses: action/setup-node@v3
+              with: 
+                node-version: ${{ matrix.node-version }}
+            - name: Fail if experimental 
+              if: matrix.tag == 'experimental'
+              run: echo ""
+            - name: Perform some tests
+              run: echo "Running tests on OS ${{ matrix.os }} and NoderJS ${{ matrix.node-version }}"
+    
+    include-example:
+        name: ${{ matrix.color}} - ${{ matrix.shape }} - ${{ matrix.size }} - ${{ matrix.opacity }}
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                color: [red, green]
+                shape: [circle, square]
+                size: [small, large]
+                include:
+                    - opacity: 50
+                    - color: red
+                      opacity: 75
+                    - shape: circle
+                      opacity: 100
+                    - color: red
+                      shape: triangle
+                    - color: green
+                      shape: circle 
+                      size: medium
+                exclude:
+                    - color: green
+                      shape: circle
+
+        steps:
+            - name: Dummy step
+              run: echo "${{ matrix.color}} - ${{ matrix.shape }} - ${{ matrix.size }} - ${{ matrix.opacity }}"
+                
+
+
