@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check for Dependency updates
-        uses: ./.github/actions/composite-cache-deps
+        uses: ./.github/actions/js-dependency-update
 
         
