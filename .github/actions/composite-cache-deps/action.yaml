@@ -15,11 +15,11 @@ runs:
   using: composite
   steps:
     - name: Setup NodeJS version ${{ inputs.node-version }}
-      uses: action/setup-node@v3
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ inputs.node-version }}
     - name: Cache dependencies
-      uses: action/cache@v3
+      uses: actions/cache@v3
       with:
         path: ${{ inputs.working-dir }}/node_modules
         key: node-modules-${{ hashFiles('${{ inputs.working-dir }}/package-lock.json') }}
