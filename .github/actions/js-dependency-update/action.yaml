@@ -1,6 +1,20 @@
 name: Update NPM Dependencies
 description: Checks if there are updates NPM packages, and creates a PR with the updated package*.json files.
 
+inputs: 
+  base-branch: 
+    description: The Branch 
+    default: main
+    required: false
+  target-branch:
+    description: the branch from which the PR is created
+    default: update-dependencies
+    required: false
+  working-directory:
+    descriptin: The woriing dire of the project to chec for dependencies
+    required: true
+    
+
 runs:
   using: node20
   main: index.js
